@@ -12,13 +12,14 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        VBox vBox = new VBox();
-        Button button = new Button("test");
-        vBox.getChildren().addAll(button);
-        Scene scene = new Scene(vBox, 320, 240);
+        AppOverlay overlay = new AppOverlay();
+
+
         stage.setTitle("Hello!");
-        stage.setScene(scene);
+        stage.setScene(overlay.buildOverlay());
         stage.show();
+
+        //Runtime. getRuntime(). exec("explorer.exe /select," + "D:\\downloads");
     }
 
     public static void main(String[] args) {
