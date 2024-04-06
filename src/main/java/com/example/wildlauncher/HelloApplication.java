@@ -11,12 +11,12 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        AppOverlay overlay = new AppOverlay();
+    public void start(Stage stage) {
+        MainContainer mainContainer = new MainContainer();
 
 
         stage.setTitle("Hello!");
-        stage.setScene(overlay.buildOverlay());
+        stage.setScene(mainContainer.getScene());
         stage.show();
 
         //Runtime. getRuntime(). exec("explorer.exe /select," + "D:\\downloads");

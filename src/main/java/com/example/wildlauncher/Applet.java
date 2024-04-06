@@ -28,7 +28,12 @@ public class Applet extends GridPane {
     public void buildApplet() {
         this.setHeight(200);
         this.setWidth(200);
-        this.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+        if (application.running) {
+            this.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else {
+            this.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
+
         this.setVisible(true);
 
         Text appletName = new Text(application.name);
