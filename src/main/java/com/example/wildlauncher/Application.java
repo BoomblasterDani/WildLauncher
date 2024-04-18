@@ -1,11 +1,11 @@
 package com.example.wildlauncher;
 
 public class Application { //Blueprint for app infos
-    public Application(String name, String path, String scriptPath, boolean running) {
+    public Application(String name, String path, String scriptPath) {
         this.name = name;
         this.path = path;
         this.scriptPath = scriptPath;
-        this.running = running;
+        //this.running = running;
     }
 
     public String name;

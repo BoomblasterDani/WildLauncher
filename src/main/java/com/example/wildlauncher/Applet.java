@@ -5,16 +5,14 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Applet extends GridPane {
 
@@ -26,8 +24,12 @@ public class Applet extends GridPane {
     Application application;
 
     public void buildApplet() {
-        this.setHeight(200);
-        this.setWidth(200);
+        Rectangle rect = new Rectangle();
+        rect.setArcHeight(30);
+        rect.setHeight(200);
+        rect.setWidth(200);
+
+        this.setClip(rect);
         if (application.running) {
             this.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
         } else {
@@ -61,5 +63,7 @@ public class Applet extends GridPane {
         });
 
     }
+
+    //public static List<Applet>
 
 }
