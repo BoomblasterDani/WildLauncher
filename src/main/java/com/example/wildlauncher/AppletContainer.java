@@ -1,5 +1,7 @@
 package com.example.wildlauncher;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 
@@ -22,7 +24,7 @@ public class AppletContainer extends FlowPane { //Main window
 
 
 
-        List<Application> applications;
+        ObservableList<Application> applications;
         try {
             createActivityTable();
             //addApplicationToTable("FirstDBe", "somewhere", "prob");
@@ -32,28 +34,19 @@ public class AppletContainer extends FlowPane { //Main window
         }
 
 
-        /*Application app1 = new Application("Test", "explore", "cript");
 
-
-        Application app2 = new Application("lol", "lil", "hey");
-
-        //Sidebar sidebar = new Sidebar();
-
-        Applet applet1 = new Applet(app1);
-        Applet applet2 = new Applet(app2);
-        Applet applet3 = new Applet(applications.get(0));*/
-
-
-        this.getChildren().addAll(createAppletsList(applications));
+        this.getChildren().addAll(createAppletsList((ObservableList<Application>) applications));
 
     }
 
-    private List<Applet> createAppletsList(List<Application> applications) {
-        List<Applet> applets = new ArrayList<>();
+    private ObservableList<Applet> createAppletsList(ObservableList<Application> applications) {
+        ObservableList<Applet> applets = FXCollections.observableArrayList();
 
         for (Application app : applications) {
             applets.add(new Applet(app));
         }
         return applets;
     }
+
+
 }

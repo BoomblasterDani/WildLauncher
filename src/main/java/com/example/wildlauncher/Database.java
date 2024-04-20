@@ -1,4 +1,7 @@
 package com.example.wildlauncher;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,10 +59,10 @@ public class Database {
         }
     }
 
-    public static List<Application> getAcitivitiesFromTable() throws SQLException {
+    public static ObservableList<Application> getAcitivitiesFromTable() throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:derby:applicationDB;create=true");
 
-        List<Application> applications = new ArrayList<>();
+        ObservableList<Application> applications = FXCollections.observableArrayList();
         String SELECT_FROM_TABLE_INSTRUCTIONS = "SELECT * FROM APPLICATIONS";
         try (PreparedStatement query = connection.prepareStatement(SELECT_FROM_TABLE_INSTRUCTIONS);
             ResultSet result = query.executeQuery()) {

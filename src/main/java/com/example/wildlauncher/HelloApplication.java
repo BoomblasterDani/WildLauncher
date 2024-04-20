@@ -13,9 +13,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) {
+
+
         MainContainer mainContainer = new MainContainer();
-
-
         stage.setTitle("Hello!");
         stage.setScene(mainContainer.getScene());
         stage.show();
@@ -23,6 +23,10 @@ public class HelloApplication extends Application {
 
         //Runtime. getRuntime(). exec("explorer.exe /select," + "D:\\downloads");
     }
+
+
+
+
 
 
 
