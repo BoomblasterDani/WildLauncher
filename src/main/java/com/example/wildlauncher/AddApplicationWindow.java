@@ -1,6 +1,5 @@
 package com.example.wildlauncher;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
@@ -16,8 +14,10 @@ import java.sql.SQLException;
 import static com.example.wildlauncher.Database.addApplicationToTable;
 
 public class AddApplicationWindow extends Stage {
-    AddApplicationWindow() {
+    AppletContainer appletContainer;
+    AddApplicationWindow(AppletContainer appletContainer) {
         buildApplicationWindow();
+        this.appletContainer = appletContainer;
     }
 
     public void buildApplicationWindow() {
@@ -61,9 +61,10 @@ public class AddApplicationWindow extends Stage {
                             scriptPathTextField.getText()
                     );
                     //AppletContainer.reloadAppletContainer(Database.getAcitivitiesFromTable());
-                    Stage stage = new Stage();
+                    /*Stage stage = new Stage();
                     HelloApplication helloApplication = new HelloApplication();
-                    helloApplication.start(stage);
+                    helloApplication.start(stage);*/
+                    appletContainer.buildAppletContainer();
                     closeWindow();
 
                 } catch (SQLException e) {

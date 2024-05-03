@@ -2,6 +2,8 @@ package com.example.wildlauncher;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 
@@ -17,9 +19,11 @@ public class AppletContainer extends FlowPane { //Main window
     }
 
 
-    private void buildAppletContainer() {
+    public void buildAppletContainer() {
         this.setVgap(10);
         this.setHgap(10);
+        this.setOrientation(Orientation.VERTICAL);
+        this.setPadding(new Insets(20, 20, 20, 20));
 
 
 
@@ -35,7 +39,7 @@ public class AppletContainer extends FlowPane { //Main window
 
 
 
-        this.getChildren().addAll(createAppletsList((ObservableList<Application>) applications));
+        this.getChildren().setAll(createAppletsList((ObservableList<Application>) applications));
 
     }
 

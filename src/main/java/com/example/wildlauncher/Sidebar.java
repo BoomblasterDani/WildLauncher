@@ -9,14 +9,13 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class Sidebar extends VBox {
-    public Sidebar() {
+
+    private AppletContainer appletContainer;
+    public Sidebar(AppletContainer appletContainer) {
         buildSidebar();
+        this.appletContainer = appletContainer;
     }
 
     private void buildSidebar() {
@@ -33,7 +32,7 @@ public class Sidebar extends VBox {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                AddApplicationWindow addApplicationWindow = new AddApplicationWindow();
+                AddApplicationWindow addApplicationWindow = new AddApplicationWindow(appletContainer);
             }
         });
     }
