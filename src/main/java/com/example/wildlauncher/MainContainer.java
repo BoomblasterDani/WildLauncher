@@ -19,7 +19,7 @@ public class MainContainer extends HBox {
 
 
         this.getChildren().addAll(sidebar, appletContainer);
-        Scene scene = new Scene(this, 320, 240);
+        Scene scene = new Scene(this, 620, 440);
         return scene;
     }
 

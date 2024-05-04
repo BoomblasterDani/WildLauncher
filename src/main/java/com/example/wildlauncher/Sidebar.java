@@ -3,6 +3,7 @@ package com.example.wildlauncher;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -22,10 +23,14 @@ public class Sidebar extends VBox {
 
         this.prefHeight(Double.MAX_VALUE);
         this.setMinWidth(60);
-        this.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Color.SKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
         this.setVisible(true);
 
-        Button addButton = new Button("+");
+        Button addButton = new Button();
+        addButton.setGraphic(Icon.PLUS.getIcon(50, 50));
+        addButton.setBackground(null);
+        this.setAlignment(Pos.TOP_CENTER);
+        this.setPadding(new Insets(20, 0, 0, 0));
 
         this.getChildren().addAll(addButton);
 

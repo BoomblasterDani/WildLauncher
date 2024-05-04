@@ -3,12 +3,25 @@ package com.example.wildlauncher;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public enum Icon {
-    PLAY ("icons/play.png"),
-    STOP (""),
-    RESTART ("");
+import java.util.ArrayList;
 
-    Icon(String s) {
-        ImageView imageView = new ImageView(new Image(s));
+public enum Icon {
+    PLAY ("/com/example/wildlauncher/icons/play.png"),
+    STOP ("/com/example/wildlauncher/icons/stop.png"),
+    FOLDER ("/com/example/wildlauncher/icons/folder.png"),
+    PLUS ("/com/example/wildlauncher/icons/plus.png")
+    ;
+
+    Image iconImg;
+
+    Icon(String imagePath) {
+        iconImg = new Image((getClass().getResourceAsStream(imagePath)), 100, 100, false, false);
+    }
+
+    public ImageView getIcon(int width, int height) {
+        ImageView iconImgView = new ImageView(iconImg);
+        iconImgView.setFitWidth(width);
+        iconImgView.setFitHeight(height);
+        return iconImgView;
     }
 }

@@ -3,8 +3,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.sql.DriverManager;
 
 public class Database {
@@ -59,7 +57,24 @@ public class Database {
         }
     }
 
-    public static ObservableList<Application> getAcitivitiesFromTable() throws SQLException {
+    public static void editApplicationInTable(int id, String name, String path, String scriptPath) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:derby:applicationDB;create=true");
+
+        String EDIT_IN_TABLE_SQL_INSTRUCTIONS = "UPDATE APPLICATIONS SET NAME = (?), PATH = (?), SCRIPTPATH = (?) " +
+                "WHERE (ID) = (?)";
+
+        try (PreparedStatement editInTableSQLInstructions = connection.prepareStatement(EDIT_IN_TABLE_SQL_INSTRUCTIONS)) {
+            editInTableSQLInstructions.setString(1, name);
+            editInTableSQLInstructions.setString(2, path);
+            editInTableSQLInstructions.setString(3, scriptPath);
+            editInTableSQLInstructions.setInt(4, id);
+            editInTableSQLInstructions.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ObservableList<Application> getApplicationsFromTable() throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:derby:applicationDB;create=true");
 
         ObservableList<Application> applications = FXCollections.observableArrayList();
@@ -68,6 +83,7 @@ public class Database {
             ResultSet result = query.executeQuery()) {
             while (result.next()) {
                 Application application = new Application(
+                        result.getInt("ID"),
                         result.getString("NAME"),
                         result.getString("PATH"),
                         result.getString("SCRIPTPATH")
@@ -76,6 +92,19 @@ public class Database {
             }
         }
         return applications;
+    }
+
+    public static void deleteApplication(int id) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:derby:applicationDB;create=true");
+
+        String DELETE_FROM_TABLE_SQL_INSTRUCTIONS = "DELETE FROM APPLICATIONS WHERE ID = (?)";
+
+        try (PreparedStatement deleteFromTableSQLInstructions = connection.prepareStatement(DELETE_FROM_TABLE_SQL_INSTRUCTIONS)) {
+            deleteFromTableSQLInstructions.setInt(1, id);
+            deleteFromTableSQLInstructions.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
