@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public enum Icon {
     PLAY ("/com/example/wildlauncher/icons/play.png"),
     STOP ("/com/example/wildlauncher/icons/stop.png"),
+    EDIT ("/com/example/wildlauncher/icons/edit.png"),
     FOLDER ("/com/example/wildlauncher/icons/folder.png"),
     PLUS ("/com/example/wildlauncher/icons/plus.png")
     ;

@@ -30,7 +30,7 @@ public class Sidebar extends VBox {
         addButton.setGraphic(Icon.PLUS.getIcon(50, 50));
         addButton.setBackground(null);
         this.setAlignment(Pos.TOP_CENTER);
-        this.setPadding(new Insets(20, 0, 0, 0));
+        this.setPadding(new Insets(10, 0, 0, 0));
 
         this.getChildren().addAll(addButton);
 
