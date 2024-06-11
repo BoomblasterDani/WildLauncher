@@ -130,37 +130,33 @@ public class Applet extends Pane {
         startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                //Process process = null;
                 Task<Integer> scriptTask = new Task<Integer>() {
                     @Override
                     protected Integer call() throws Exception {
                         int id = 1;
-                        long pid = 0;
                         Process process = null;
-                        try {
-                            //ProcessBuilder processBuilder = new ProcessBuilder();
-                            //processBuilder.command(application.scriptPath);
-                            //processBuilder.directory(new File("C:\\Users\\ASUS\\Desktop\\bat_cmds\\testMCserver"));
-                            //processBuilder.command("java -jar C:\\Users\\ASUS\\Desktop\\bat_cmds\\testMCserver\\paper.jar");
-                            process = Runtime.getRuntime().exec("java -jar C:\\Users\\ASUS\\Desktop\\bat_cmds\\testMCserver\\paper.jar", null, new File("C:\\Users\\ASUS\\Desktop\\bat_cmds\\testMCserver"));
-                            System.out.println("1");
-                            //process = processBuilder.start();
+                        PrintWriter writer = null;
 
-                            pid = process.pid();
-                            System.out.println(pid);
-                            System.out.println(process.getOutputStream());
+                        try {
+                            ProcessBuilder processBuilder = new ProcessBuilder();
+                            processBuilder.directory(new File(application.path));
+                            processBuilder.command("./start.sh");
+
+
+                            process = processBuilder.start();
+                            writer = new PrintWriter(process.getOutputStream());
+
+
                             id = process.waitFor();
 
                         } catch (InterruptedException e) {
-                            /*Process killProcess = null;
-                            System.out.println("Exiting gracefully");
-                            ProcessBuilder pb = new ProcessBuilder();
-                            pb.command("taskkill /pid " + pid);*/
-                            //process.input
-                            Process killProcess = Runtime.getRuntime().exec("taskkill /pid " + pid);
-                            //killProcess.;
 
+                            writer.write("stop");
+                            writer.write("\n");
+                            writer.flush();
+                            System.out.println("teest");
 
-                            process.destroy();
 
                         }
                         return id;
