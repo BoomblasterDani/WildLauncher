@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 
 import java.sql.SQLException;
@@ -17,8 +18,8 @@ public class AppletContainer extends FlowPane { //Main window
 
 
     public void buildAppletContainer() {
-        this.setVgap(10);
-        this.setHgap(10);
+        this.setVgap(20);
+        this.setHgap(20);
         this.setOrientation(Orientation.HORIZONTAL);
         //this.setMaxWidth(800);
         //this.setWidth(800);

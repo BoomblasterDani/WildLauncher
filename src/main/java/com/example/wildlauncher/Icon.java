@@ -1,7 +1,11 @@
 package com.example.wildlauncher;
 
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -9,8 +13,11 @@ public enum Icon {
     PLAY ("/com/example/wildlauncher/icons/play.png"),
     STOP ("/com/example/wildlauncher/icons/stop.png"),
     EDIT ("/com/example/wildlauncher/icons/edit.png"),
+    LIGHTEDIT ("/com/example/wildlauncher/icons/edit-light.png"),
     FOLDER ("/com/example/wildlauncher/icons/folder.png"),
-    PLUS ("/com/example/wildlauncher/icons/plus.png")
+    LIGHTFOLDER ("/com/example/wildlauncher/icons/folder-light.png"),
+    PLUS ("/com/example/wildlauncher/icons/plus.png"),
+    WOLF ("/com/example/wildlauncher/icons/wolf.png")
     ;
 
     Image iconImg;

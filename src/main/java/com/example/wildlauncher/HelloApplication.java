@@ -15,7 +15,8 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) {
         MainContainer mainContainer = new MainContainer();
-        stage.setTitle("Hello!");
+        stage.getIcons().add(Icon.WOLF.getIcon(64, 64).getImage());
+        stage.setTitle("Wild-Launcher");
         stage.setScene(mainContainer.getScene());
         stage.show();
 

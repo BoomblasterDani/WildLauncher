@@ -29,4 +29,8 @@ public class RecktanglePane extends StackPane {
         background.setWidth(with);
         this.getChildren().addAll(background);
     }
+
+    public void setFill(Color color) {
+        background.setFill(color);
+    }
 }

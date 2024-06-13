@@ -21,13 +21,15 @@ public class Sidebar extends VBox {
 
     private void buildSidebar() {
 
-        this.prefHeight(Double.MAX_VALUE);
-        this.setMinWidth(60);
-        this.setBackground(new Background(new BackgroundFill(Color.SKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        //this.prefHeight(Double.MAX_VALUE);
+        this.prefHeight(400);
+        this.setMinWidth(70);
+        this.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         this.setVisible(true);
 
         Button addButton = new Button();
         addButton.setGraphic(Icon.PLUS.getIcon(50, 50));
+
         addButton.setBackground(null);
         this.setAlignment(Pos.TOP_CENTER);
         this.setPadding(new Insets(10, 0, 0, 0));
@@ -38,6 +40,7 @@ public class Sidebar extends VBox {
             @Override
             public void handle(ActionEvent actionEvent) {
                 AddApplicationWindow addApplicationWindow = new AddApplicationWindow(appletContainer);
+
             }
         });
     }

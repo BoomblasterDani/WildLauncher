@@ -10,6 +10,8 @@ import javafx.scene.layout.*;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.io.*;
@@ -42,16 +44,19 @@ public class Applet extends Pane {
 
         //BUTTONS
         Button editButton = new Button();
-        editButton.setGraphic(Icon.EDIT.getIcon(15,15));
+        editButton.setGraphic(Icon.LIGHTEDIT.getIcon(20,20));
+        editButton.setBackground(null);
+        editButton.setMaxHeight(20);
+        editButton.setMinHeight(15);
 
         Button startButton = new Button("");
         startButton.setGraphic(Icon.PLAY.getIcon(15,15));
 
         Button stopButton = new Button("");
         stopButton.setGraphic(Icon.STOP.getIcon(15,15));
-        stopButton.setBackground(null);
+        //stopButton.setBackground(null);
 
-        Button filesButton = new Button("Files");
+        Button filesButton = new Button("");
         filesButton.setGraphic(Icon.FOLDER.getIcon(15,15));
 
 
@@ -59,11 +64,13 @@ public class Applet extends Pane {
 
 
 
-        RecktanglePane nameBar = new RecktanglePane(Color.PALEVIOLETRED, 30, 200, 15, 15);
+        RecktanglePane nameBar = new RecktanglePane(Color.DARKVIOLET, 30, 200, 15, 15);
         HBox namebarHBox = new HBox();
         Text appletName = new Text(application.name);
+        appletName.setFill(Color.LIGHTGREY);
+        appletName.setStyle("-fx-font-weight: bold");
         Region spacing = new Region();
-        namebarHBox.setPadding(new Insets(4, 10, 0, 10));
+        namebarHBox.setPadding(new Insets(4, 5, 0, 10));
         namebarHBox.getChildren().addAll(appletName, spacing, editButton);
         HBox.setHgrow(spacing, Priority.ALWAYS);
 
@@ -141,21 +148,20 @@ public class Applet extends Pane {
                         try {
                             ProcessBuilder processBuilder = new ProcessBuilder();
                             processBuilder.directory(new File(application.path));
-                            processBuilder.command("./start.sh");
+                            processBuilder.command("C:\\Users\\ASUS\\Desktop\\bat_cmds\\testMCserver\\start.bat");
 
 
                             process = processBuilder.start();
+
                             writer = new PrintWriter(process.getOutputStream());
+
 
 
                             id = process.waitFor();
 
                         } catch (InterruptedException e) {
+                            writeToConsole(writer,"stop");
 
-                            writer.write("stop");
-                            writer.write("\n");
-                            writer.flush();
-                            System.out.println("teest");
 
 
                         }
@@ -165,16 +171,20 @@ public class Applet extends Pane {
 
                 new Thread(scriptTask).start();
                 scriptTask.setOnRunning(e -> {
-                    background.setFill(Color.LIGHTBLUE);
+                    background.setFill(Color.THISTLE);
+                    //nameBar.setFill(Color.DARKVIOLET);
                 });
                 scriptTask.setOnSucceeded(e -> {
                     background.setFill(Color.LIGHTGREY);
+                    //nameBar.setFill(Color.THISTLE);
                 });
                 scriptTask.setOnFailed(e -> {
                     background.setFill(Color.LIGHTGREY);
+                    //nameBar.setFill(Color.THISTLE);
                 });
                 scriptTask.setOnCancelled(e -> {
                     background.setFill(Color.LIGHTGREY);
+                    //nameBar.setFill(Color.THISTLE);
                 });
 
                 stopButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -195,6 +205,13 @@ public class Applet extends Pane {
 
 
 
+    }
+
+    private void writeToConsole(PrintWriter writer, String command) {
+        writer.write(command);
+        writer.write("\n");
+        writer.flush();
+        System.out.println("teest");
     }
 
     // SERVICES

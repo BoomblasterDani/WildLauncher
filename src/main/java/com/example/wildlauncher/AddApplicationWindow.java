@@ -2,12 +2,15 @@ package com.example.wildlauncher;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 
+import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -26,9 +29,10 @@ public class AddApplicationWindow extends Stage {
     }
 
     public void buildApplicationWindow() {
-        this.setTitle("test");
+        this.setTitle("Add server");
+        this.getIcons().add(Icon.WOLF.iconImg);
         GridPane form = buildFormUI();
-        Scene scene = new Scene(form, 320, 240);
+        Scene scene = new Scene(form, 420, 240);
         this.setScene(scene);
         this.show();
 
@@ -36,24 +40,33 @@ public class AddApplicationWindow extends Stage {
 
     private GridPane buildFormUI() {
         GridPane form = new GridPane();
+        form.setPadding(new Insets(10));
+        form.setHgap(5);
+        form.setVgap(5);
 
         Label nameLabel = new Label("Name of App:");
         TextField nameTextField = new TextField();
 
-        Label pathLabel = new Label("Enter path of App");
+        Label pathLabel = new Label("Enter path of App:");
         TextField pathTextField = new TextField();
-        Button pathDirButton = new Button("file");
+        Button pathDirButton = new Button("");
+        pathDirButton.setGraphic(Icon.LIGHTFOLDER.getIcon(15, 15));
+        pathDirButton.setStyle("-fx-background-color: DARKVIOLET");
 
-        Label scriptPathLabel = new Label("Enter path of start-script");
+        Label scriptPathLabel = new Label("Enter path of start-script:");
         TextField scriptPathTextField = new TextField();
-        scriptPathTextField.setDisable(true);
-        Button scriptPathDirButton = new Button("file");
+        //scriptPathTextField.setDisable(true);
+        Button scriptPathDirButton = new Button("");
+        scriptPathDirButton.setGraphic(Icon.LIGHTFOLDER.getIcon(15, 15));
+        scriptPathDirButton.setStyle("-fx-background-color: DARKVIOLET");
 
 
 //TODO set changes in EditApplicationWindow
 
 
         Button submit = new Button("Save");
+        submit.setTextFill(Color.LIGHTGREY);
+        submit.setStyle("-fx-background-color: DARKVIOLET");
 
         DirectoryChooser directoryChooser = new DirectoryChooser();
         FileChooser fileChooser = new FileChooser();
