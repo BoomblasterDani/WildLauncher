@@ -61,6 +61,7 @@ public class Applet extends Pane {
 
 
         //Namebar
+        System.out.println(Color.BROWN.toString().replace("0x", ""));
 
 
 

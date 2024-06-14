@@ -53,16 +53,14 @@ public class EditApplicationWindow extends Stage {
 
         Label pathLabel = new Label("Enter path of App:");
         TextField pathTextField = new TextField(application.path);
-        Button pathDirButton = new Button("");
+        HoverButton pathDirButton = new HoverButton("", Color.DARKVIOLET, Color.DARKVIOLET.brighter());
         pathDirButton.setGraphic(Icon.LIGHTFOLDER.getIcon(15, 15));
-        pathDirButton.setStyle("-fx-background-color: DARKVIOLET");
 
         Label scriptPathLabel = new Label("Enter path of start-script:");
         TextField scriptPathTextField = new TextField(application.scriptPath);
         //scriptPathTextField.setDisable(true);
-        Button scriptPathDirButton = new Button("");
+        HoverButton scriptPathDirButton = new HoverButton("", Color.DARKVIOLET, Color.DARKVIOLET.brighter());
         scriptPathDirButton.setGraphic(Icon.LIGHTFOLDER.getIcon(15, 15));
-        scriptPathDirButton.setStyle("-fx-background-color: DARKVIOLET");
 
 
 
@@ -70,9 +68,7 @@ public class EditApplicationWindow extends Stage {
         Region spacing = new Region();
         HBox.setHgrow(spacing, Priority.ALWAYS);
 
-        Button submit = new Button("Save");
-        submit.setTextFill(Color.LIGHTGREY);
-        submit.setStyle("-fx-background-color: DARKVIOLET");
+        HoverButton submit = new HoverButton("Save", Color.DARKVIOLET, Color.DARKVIOLET.brighter(), Color.WHITE, true);
         submit.setBorder(new Border(new BorderStroke(Color.DARKVIOLET,
                 BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(3))));
 

@@ -15,13 +15,16 @@ public class MainContainer extends HBox {
 
 
         AppletContainer appletContainer = new AppletContainer();
+        //appletContainer.setPrefWidth(300);
+
         ScrollPane scrollPane = new ScrollPane(appletContainer);
         scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
         Sidebar sidebar = new Sidebar(appletContainer);
 
 
 
-        this.getChildren().addAll(sidebar, appletContainer);
+        this.getChildren().addAll(sidebar, scrollPane);
         Scene scene = new Scene(this, 620, 440);
         return scene;
     }
