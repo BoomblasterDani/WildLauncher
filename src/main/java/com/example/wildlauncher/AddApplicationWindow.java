@@ -49,24 +49,22 @@ public class AddApplicationWindow extends Stage {
 
         Label pathLabel = new Label("Enter path of App:");
         TextField pathTextField = new TextField();
-        Button pathDirButton = new Button("");
+        HoverButton pathDirButton = new HoverButton("", Color.DARKVIOLET, Color.DARKVIOLET.brighter());
         pathDirButton.setGraphic(Icon.LIGHTFOLDER.getIcon(15, 15));
-        pathDirButton.setStyle("-fx-background-color: DARKVIOLET");
 
         Label scriptPathLabel = new Label("Enter path of start-script:");
         TextField scriptPathTextField = new TextField();
-        //scriptPathTextField.setDisable(true);
-        Button scriptPathDirButton = new Button("");
+
+        HoverButton scriptPathDirButton = new HoverButton("", Color.DARKVIOLET, Color.DARKVIOLET.brighter());
         scriptPathDirButton.setGraphic(Icon.LIGHTFOLDER.getIcon(15, 15));
-        scriptPathDirButton.setStyle("-fx-background-color: DARKVIOLET");
+
 
 
 //TODO set changes in EditApplicationWindow
 
 
-        Button submit = new Button("Save");
+        HoverButton submit = new HoverButton("Save", Color.DARKVIOLET, Color.DARKVIOLET.brighter(), Color.DARKVIOLET, true);
         submit.setTextFill(Color.LIGHTGREY);
-        submit.setStyle("-fx-background-color: DARKVIOLET");
 
         DirectoryChooser directoryChooser = new DirectoryChooser();
         FileChooser fileChooser = new FileChooser();

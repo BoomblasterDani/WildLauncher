@@ -43,7 +43,7 @@ public class Applet extends Pane {
         VBox vBoxContainer = new VBox();
 
         //BUTTONS
-        Button editButton = new Button();
+        HoverButton editButton = new HoverButton("", Color.TRANSPARENT, Color.DARKVIOLET.brighter());
         editButton.setGraphic(Icon.LIGHTEDIT.getIcon(20,20));
         editButton.setBackground(null);
         editButton.setMaxHeight(20);
@@ -61,7 +61,7 @@ public class Applet extends Pane {
 
 
         //Namebar
-        System.out.println(Color.BROWN.toString().replace("0x", ""));
+        //System.out.println(Color.BROWN.toString().replace("0x", ""));
 
 
 
@@ -156,7 +156,7 @@ public class Applet extends Pane {
 
                             writer = new PrintWriter(process.getOutputStream());
 
-
+                            System.out.println(process.info().totalCpuDuration())  ;
 
                             id = process.waitFor();
 
