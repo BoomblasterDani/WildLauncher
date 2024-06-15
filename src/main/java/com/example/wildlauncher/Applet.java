@@ -112,6 +112,7 @@ public class Applet extends Pane {
         appletUiTable.add(ramLabel, 0, 0);
         appletUiTable.add(cpuLabel, 0, 1);
         appletUiTable.add(startButton, 0, 2);
+        appletUiTable.add(restart, 0, 2);
         appletUiTable.add(stopButton, 1, 2);
         appletUiTable.add(filesButton, 2, 2);
 
