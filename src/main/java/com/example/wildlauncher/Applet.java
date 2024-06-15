@@ -15,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+
 import java.io.*;
 
 public class Applet extends Pane {
@@ -60,7 +61,7 @@ public class Applet extends Pane {
         startButton.setGraphic(Icon.PLAY.getIcon(15,15));
 
         Button restart = new Button("Restart");
-        restart.setVisible(false);
+        //restart.set(false);
 
         Button stopButton = new Button("");
         stopButton.setGraphic(Icon.STOP.getIcon(15,15));
@@ -77,12 +78,14 @@ public class Applet extends Pane {
 
         RecktanglePane nameBar = new RecktanglePane(Color.DARKVIOLET, 30, 200, 15, 15);
         HBox namebarHBox = new HBox();
-        Text appletName = new Text(application.name);
+        Text appletName = new Text(application.name + ": ");
         appletName.setFill(Color.LIGHTGREY);
-        appletName.setStyle("-fx-font-weight: bold");
+        appletName.setStyle("-fx-font-weight: bolder");
+        Text port = new Text(ReadProperties.readFromFile(new File(application.path + "\\server.properties"), "server-port=", "enable-rcon"));
+        port.setFill(Color.LIGHTGREY);
         Region spacing = new Region();
         namebarHBox.setPadding(new Insets(4, 5, 0, 10));
-        namebarHBox.getChildren().addAll(appletName, spacing, editButton);
+        namebarHBox.getChildren().addAll(appletName, port, spacing, editButton);
         HBox.setHgrow(spacing, Priority.ALWAYS);
 
 
@@ -174,6 +177,7 @@ public class Applet extends Pane {
 
                             Runtime runtime = Runtime.getRuntime();
                             System.out.println(runtime.totalMemory());
+                            System.out.println(process.info().totalCpuDuration()) ;
 
                             id = process.waitFor();
 

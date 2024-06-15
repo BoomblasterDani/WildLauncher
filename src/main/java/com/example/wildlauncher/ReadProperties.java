@@ -10,7 +10,7 @@ public class ReadProperties {
     }
 
     public static String readFromFile(File filePath, String startString, String endString) {
-        String result = "Not set";
+        String result = "";
         StringBuilder resultStringBuilder = new StringBuilder();
         try {
             File myObj = filePath;
