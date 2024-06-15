@@ -44,7 +44,9 @@ public class Applet extends Pane {
         VBox vBoxContainer = new VBox();
 
         //LABELS
-        Label ramLabel = new Label("RAM:");
+
+        Label portLabel = new Label("Port:");
+        Label portNumberLabel = new Label(ReadProperties.readFromFile(new File(application.path + "\\server.properties"), "server-port=", "enable-rcon"));
         Label cpuLabel = new Label("CPU:");
 
         //BUTTONS
@@ -109,10 +111,11 @@ public class Applet extends Pane {
 
         //appletUiTable.add(appletName, 0, 0);
         //appletUiTable.add(editButton, 2, 0);
-        appletUiTable.add(ramLabel, 0, 0);
+        appletUiTable.add(portLabel, 0, 0);
+        appletUiTable.add(portNumberLabel, 1, 0);
         appletUiTable.add(cpuLabel, 0, 1);
         appletUiTable.add(startButton, 0, 2);
-        appletUiTable.add(restart, 0, 2);
+        //appletUiTable.add(restart, 0, 2);
         appletUiTable.add(stopButton, 1, 2);
         appletUiTable.add(filesButton, 2, 2);
 
