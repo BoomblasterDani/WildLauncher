@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 
 import javafx.scene.paint.Color;
@@ -41,6 +42,10 @@ public class Applet extends Pane {
 
         //Applet Container
         VBox vBoxContainer = new VBox();
+
+        //LABELS
+        Label ramLabel = new Label("RAM:");
+        Label cpuLabel = new Label("CPU:");
 
         //BUTTONS
         HoverButton editButton = new HoverButton("", Color.TRANSPARENT, Color.DARKVIOLET.brighter());
@@ -101,9 +106,11 @@ public class Applet extends Pane {
 
         //appletUiTable.add(appletName, 0, 0);
         //appletUiTable.add(editButton, 2, 0);
-        appletUiTable.add(startButton, 0, 1);
-        appletUiTable.add(stopButton, 1, 1);
-        appletUiTable.add(filesButton, 2, 1);
+        appletUiTable.add(ramLabel, 0, 0);
+        appletUiTable.add(cpuLabel, 0, 1);
+        appletUiTable.add(startButton, 0, 2);
+        appletUiTable.add(stopButton, 1, 2);
+        appletUiTable.add(filesButton, 2, 2);
 
 
         vBoxContainer.getChildren().addAll(nameBar, appletUiTable);
@@ -157,6 +164,9 @@ public class Applet extends Pane {
                             writer = new PrintWriter(process.getOutputStream());
 
                             System.out.println(process.info().totalCpuDuration())  ;
+
+                            Runtime runtime = Runtime.getRuntime();
+                            System.out.println(runtime.totalMemory());
 
                             id = process.waitFor();
 
