@@ -57,6 +57,9 @@ public class Applet extends Pane {
         Button startButton = new Button("");
         startButton.setGraphic(Icon.PLAY.getIcon(15,15));
 
+        Button restart = new Button("Restart");
+        restart.setVisible(false);
+
         Button stopButton = new Button("");
         stopButton.setGraphic(Icon.STOP.getIcon(15,15));
         //stopButton.setBackground(null);
@@ -183,25 +186,38 @@ public class Applet extends Pane {
                 new Thread(scriptTask).start();
                 scriptTask.setOnRunning(e -> {
                     background.setFill(Color.THISTLE);
-                    //nameBar.setFill(Color.DARKVIOLET);
+                    startButton.setVisible(false);
+                    restart.setVisible(true);
+
                 });
                 scriptTask.setOnSucceeded(e -> {
                     background.setFill(Color.LIGHTGREY);
-                    //nameBar.setFill(Color.THISTLE);
+                    startButton.setVisible(true);
+                    restart.setVisible(false);
                 });
                 scriptTask.setOnFailed(e -> {
                     background.setFill(Color.LIGHTGREY);
-                    //nameBar.setFill(Color.THISTLE);
+                    startButton.setVisible(true);
+                    restart.setVisible(false);
                 });
                 scriptTask.setOnCancelled(e -> {
                     background.setFill(Color.LIGHTGREY);
-                    //nameBar.setFill(Color.THISTLE);
+                    startButton.setVisible(true);
+                    restart.setVisible(false);
                 });
 
                 stopButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         scriptTask.cancel();
+                    }
+                });
+
+                restart.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        stopButton.fire();
+                        startButton.fire();
                     }
                 });
             }
