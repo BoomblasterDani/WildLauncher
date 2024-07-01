@@ -17,7 +17,8 @@ public enum Icon {
     FOLDER ("/com/example/wildlauncher/icons/folder.png"),
     LIGHTFOLDER ("/com/example/wildlauncher/icons/folder-light.png"),
     PLUS ("/com/example/wildlauncher/icons/plus.png"),
-    WOLF ("/com/example/wildlauncher/icons/wolf.png")
+    WOLF ("/com/example/wildlauncher/icons/wolf.png"),
+    WOLFDESKTOP ("/com/example/wildlauncher/icons/wolf-desktop-icon.png")
     ;
 
     Image iconImg;

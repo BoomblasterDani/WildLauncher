@@ -46,8 +46,9 @@ public class Applet extends Pane {
 
         //LABELS
 
-        Label portLabel = new Label("Port:");
-        Label portNumberLabel = new Label(ReadProperties.readFromFile(new File(application.path + "\\server.properties"), "server-port=", "enable-rcon"));
+        Label portLabel = new Label("RAM:");
+        //Label portNumberLabel = new Label(ReadProperties.readFromFile(new File(application.path + "\\server.properties"), "server-port=", "enable-rcon"));
+        Label portNumberLabel = new Label("");
         Label cpuLabel = new Label("CPU:");
 
         //BUTTONS
@@ -81,7 +82,8 @@ public class Applet extends Pane {
         Text appletName = new Text(application.name + ": ");
         appletName.setFill(Color.LIGHTGREY);
         appletName.setStyle("-fx-font-weight: bolder");
-        Text port = new Text(ReadProperties.readFromFile(new File(application.path + "\\server.properties"), "server-port=", "enable-rcon"));
+        Text port = new Text(ReadProperties.readFromFile(new File(application.path + "\\server.properties"), "server-port=", "simulation-distance"));
+        //Text port = new Text("25565");
         port.setFill(Color.LIGHTGREY);
         Region spacing = new Region();
         namebarHBox.setPadding(new Insets(4, 5, 0, 10));
