@@ -168,7 +168,10 @@ public class Applet extends Pane {
                         try {
                             ProcessBuilder processBuilder = new ProcessBuilder();
                             processBuilder.directory(new File(application.path));
-                            processBuilder.command("C:\\Users\\ASUS\\Desktop\\bat_cmds\\testMCserver\\start.bat");
+                            System.out.println(application.scriptPath.replace("\\", "\\\\"));
+                            processBuilder.command(application.scriptPath.replace("\\", "\\\\"));
+                            //processBuilder.command(application.scriptPath.replaceAll("\\", "\\\\"));
+
 
 
                             process = processBuilder.start();
